@@ -87,6 +87,3 @@ console.log(students.sort((a,b) => !a.isMarried ? -1 : 1))
 
 
 
-
-
-
