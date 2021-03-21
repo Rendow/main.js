@@ -62,7 +62,17 @@ export function calcSwitch(a: number, b: number, action: string){
       }
 }
 
-// 14.Напишите функцию addFriends, которая принимает параметром массив students
-// и добавляет в каждому студенту свойство "friends",
-// значением которого является массив имён всех остальных студентов из массива,
-// за исключением собственного имени студента. Т.е. в друзьях у Боба Боба быть не должно.
+
+type FriendsType = {
+    name: string
+    age: number
+    isMarried: boolean
+    scores: number
+}
+type Students = FriendsType[]
+
+export let addFriends = (students:Students) => {
+   let res = students.map( s => ({...s, friends:students.map(s => s.name ).filter( n => n !== s.name)  }) )
+    return res
+}
+

@@ -1,4 +1,4 @@
-import {calcSwitch, copyStudents, deepCopyStudents, restParam, StudentType, sum} from "./task";
+import {addFriends, calcSwitch, copyStudents, deepCopyStudents, restParam, StudentType, sum} from "./task";
 
 
 test('sum of two numbers', () => {
@@ -66,5 +66,42 @@ test('test calc', () => {
     expect(calcSwitch(4,3,'mult')).toBe(12)
     expect(calcSwitch(4,4,'div')).toBe(1)
     expect(calcSwitch(4,4,'sub')).toBe(0)
+
+})
+test('test addFriends', () => {
+
+    let students = [
+        {
+            name: "Bob",
+            age: 22,
+            isMarried: true,
+            scores: 85
+        },
+        {
+            name: "Alex",
+            age: 21,
+            isMarried: true,
+            scores: 90
+        },
+        {
+            name: "Nick",
+            age: 20,
+            isMarried: false,
+            scores: 120
+        },]
+    let copy = addFriends(students)
+
+    expect(copy === students ).toBe(false)
+    expect(copy[0].name === students[0].name ).toBe(true)
+
+    expect(copy[0].friends).toBeDefined()
+    expect(students[0].friends).toBeUndefined()
+
+    expect(copy[0].friends ).toEqual(["Alex", "Nick"])
+    expect(copy[1].friends ).toEqual(["Bob", "Nick"])
+    expect(copy[2].friends ).toEqual(["Bob","Alex"])
+
+
+
 
 })
