@@ -128,9 +128,9 @@ export const isEvenSumGreater = (arr: Array<number>) => {
 // площадь квадрата. Функция должна возвращать true если круг поместится в
 // квадрате и false в противном случае.
 
-
+// пл. квадрата = х*х, пл круга = d*пи
 export const isSquareGreater = (sCr: number, sSq: number) => {
-    return [1]
+    return sSq/2 >=  sCr/3.14
 }
 
 // 6. Функция-банкомат принимает параметром целое натуральное число (сумму).
@@ -139,5 +139,15 @@ export const isSquareGreater = (sCr: number, sSq: number) => {
 // const banknotes = [1000, 500, 100, 50, 20, 10, 5, 2, 1]
 
 export const getBanknoteList = (total: number) => {
-    return [1]
+    const banknotes = [1000, 500, 100, 50, 20, 10, 5, 2, 1]
+    const result = []
+
+    for (let i = 0; i < banknotes.length; i++) {
+        let note = banknotes[i]
+        while (total - note >= 0) {
+            total -= note
+            result.push(note)
+        }
+    }
+    return result
 }
